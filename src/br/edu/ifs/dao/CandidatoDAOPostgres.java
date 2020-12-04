@@ -35,7 +35,7 @@ public class CandidatoDAOPostgres implements ICandidatoDAO {
 			stmt.setString(8, candidato.getEmail());
 			stmt.execute();
 			
-			sql = "SELECT CURRVAL(pg_get_serial_sequence('tb_usuario', 'id')) AS id";
+			sql = "SELECT CURRVAL(pg_get_serial_sequence('tb_candidato', 'id')) AS id";
 			stmt = this.conexao.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			
@@ -51,9 +51,10 @@ public class CandidatoDAOPostgres implements ICandidatoDAO {
 		}
 	}
 
+	/*
 	@Override
 	public Candidato recuperar(int id) throws Exception, SQLException {
-		String sql = "SELECT * FROM tb_usuario WHERE id = ?";
+		String sql = "SELECT * FROM tb_candidato WHERE id = ?";
 		
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
@@ -76,18 +77,23 @@ public class CandidatoDAOPostgres implements ICandidatoDAO {
 			conexao.close();
 		}
 	}
-
+*/
 	@Override
 	public boolean atualizar(Candidato candidato) throws SQLException {
-		String sql = "UPDATE tb_usuario SET nome=?, login=?, senha=MD5(?) WHERE id = ?";
+		String sql = "UPDATE tb_candidato SET nome=?, senha=MD5(?), cpf=?, formacao_academica=?, experiencia_prof=?, aperfeicoamento=?, telefone=?, email=?   WHERE id = ?";
 		
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
 			
 			stmt.setString(1, candidato.getNome());
-			stmt.setString(2, candidato.getLogin());
-			stmt.setString(3, candidato.getSenha());
-			stmt.setInt(4, candidato.getId());
+			stmt.setString(2, candidato.getSenha());
+			stmt.setString(3, candidato.getCpf());
+			stmt.setString(4, candidato.getFormacao_academica());
+			stmt.setString(5, candidato.getExperiencia_prof());
+			stmt.setString(6, candidato.getAperfeicoamento());
+			stmt.setString(7, candidato.getTelefone());
+			stmt.setString(8, candidato.getEmail());
+			stmt.setInt(9, candidato.getId());
 			stmt.executeUpdate(); 
 			
 			
@@ -102,7 +108,7 @@ public class CandidatoDAOPostgres implements ICandidatoDAO {
 
 	@Override
 	public boolean excluir(Candidato candidato) throws SQLException {
-		String sql = "DELETE FROM tb_usuario WHERE id = ?";
+		String sql = "DELETE FROM tb_candidato WHERE id = ?";
 
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
@@ -128,8 +134,9 @@ public class CandidatoDAOPostgres implements ICandidatoDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
+	
+	
+	/*
 	public List<Candidato> listar() throws SQLException {
 		String sql = "SELECT id, nome, login, senha FROM tb_usuario ORDER BY id";
 		List<Candidato> listaUsuarios = new ArrayList<Candidato>();
@@ -160,10 +167,12 @@ public class CandidatoDAOPostgres implements ICandidatoDAO {
 			conexao.close();
 		}
 	}
-
+	*/
+	
+	
 	@Override
 	public Candidato autenticar(String login, String senha) throws SQLException {
-		String sql = "SELECT * FROM tb_usuario WHERE login = ? AND senha = MD5(?)";
+		String sql = "SELECT * FROM tb_candidato WHERE email = ? AND senha = MD5(?)";
 		
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
