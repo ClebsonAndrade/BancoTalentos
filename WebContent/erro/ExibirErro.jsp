@@ -2,11 +2,15 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Sistema acadêmio - erro</title>
+	</head>
+		<body>
+			<%
+			String descricaoErro = (String) request.getSession().getAttribute("erro");
+			%>
+			
+			<p><%=descricaoErro%></p>
+		</body>
+	</html>

@@ -15,11 +15,11 @@ import br.edu.ifs.dao.ICandidatoDAO;
 import br.edu.ifs.dao.CandidatoDAOPostgres;
 import br.edu.ifs.modelo.Candidato;
 
-@WebServlet("/CadastrarCandidato.do")
-public class CadastrarCandidato extends HttpServlet{
+@WebServlet("/CadastrarPerfil.do")
+public class CadastrarPerfil extends HttpServlet{
 	private static final long serialVersionUTD = 1L;
 	
-	public CadastrarCandidato() {
+	public CadastrarPerfil() {
 		super();
 	}
 	
@@ -36,7 +36,6 @@ public class CadastrarCandidato extends HttpServlet{
 		String Cpf = request.getParameter("cpf");
 		String Formacao_academica = request.getParameter("formacao_academica");
 		String Experiencia_prof = request.getParameter("experiencia_prof");
-		String senha = request.getParameter("senha");
 		String Aperfeicoamento = request.getParameter("aperfeicoamento");
 		String Telefone = request.getParameter("telefone");
 		

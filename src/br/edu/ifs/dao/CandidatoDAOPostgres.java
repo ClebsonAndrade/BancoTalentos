@@ -51,7 +51,7 @@ public class CandidatoDAOPostgres implements ICandidatoDAO {
 		}
 	}
 
-	/*
+	
 	@Override
 	public Candidato recuperar(int id) throws Exception, SQLException {
 		String sql = "SELECT * FROM tb_candidato WHERE id = ?";
@@ -64,7 +64,7 @@ public class CandidatoDAOPostgres implements ICandidatoDAO {
 			ResultSet rs = stmt.executeQuery();
 			
 			if(rs.next()) {
-				Candidato candidato = new Candidato(rs.getInt("id"), rs.getString("nome"), rs.getString("login"), rs.getString("senha"));
+				Candidato candidato = new Candidato(rs.getInt("id"), rs.getString("nome"), rs.getString("cpf"), rs.getString("senha"), rs.getString("formacao_academica"), rs.getString("experiencia_prof"), rs.getString("aperfeicoamento"), rs.getString("telefone"), rs.getString("email"));
 				
 				return candidato;
 			} else {
@@ -77,7 +77,7 @@ public class CandidatoDAOPostgres implements ICandidatoDAO {
 			conexao.close();
 		}
 	}
-*/
+
 	@Override
 	public boolean atualizar(Candidato candidato) throws SQLException {
 		String sql = "UPDATE tb_candidato SET nome=?, senha=MD5(?), cpf=?, formacao_academica=?, experiencia_prof=?, aperfeicoamento=?, telefone=?, email=?   WHERE id = ?";

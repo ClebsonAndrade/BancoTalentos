@@ -9,7 +9,7 @@ public interface ICandidatoDAO {
 
 	public int criar(Candidato candidato) throws SQLException;
 	
-	//public Candidato recuperar(int id) throws Exception, SQLException;
+	public Candidato recuperar(int id) throws Exception, SQLException;
 	
 	public boolean atualizar(Candidato candidato) throws SQLException;
 	
