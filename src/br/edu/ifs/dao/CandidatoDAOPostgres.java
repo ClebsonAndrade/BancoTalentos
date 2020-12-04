@@ -28,8 +28,8 @@ public class CandidatoDAOPostgres implements ICandidatoDAO {
 			stmt.setString(1, candidato.getNome());
 			stmt.setString(2, candidato.getSenha());
 			stmt.setString(3, candidato.getCpf());
-			stmt.setString(4, candidato.getFormacao_academica());
-			stmt.setString(5, candidato.getExperiencia_prof());
+			stmt.setString(4, candidato.getFormacaoAcademica());
+			stmt.setString(5, candidato.getExperienciaProf());
 			stmt.setString(6, candidato.getAperfeicoamento());
 			stmt.setString(7, candidato.getTelefone());
 			stmt.setString(8, candidato.getEmail());
@@ -68,7 +68,7 @@ public class CandidatoDAOPostgres implements ICandidatoDAO {
 				
 				return candidato;
 			} else {
-				throw new Exception("O ID do usuário não existe");
+				throw new Exception("O ID do candidato não existe");
 			}
 			
 		} catch (SQLException e) {
@@ -88,8 +88,8 @@ public class CandidatoDAOPostgres implements ICandidatoDAO {
 			stmt.setString(1, candidato.getNome());
 			stmt.setString(2, candidato.getSenha());
 			stmt.setString(3, candidato.getCpf());
-			stmt.setString(4, candidato.getFormacao_academica());
-			stmt.setString(5, candidato.getExperiencia_prof());
+			stmt.setString(4, candidato.getFormacaoAcademica());
+			stmt.setString(5, candidato.getExperienciaProf());
 			stmt.setString(6, candidato.getAperfeicoamento());
 			stmt.setString(7, candidato.getTelefone());
 			stmt.setString(8, candidato.getEmail());

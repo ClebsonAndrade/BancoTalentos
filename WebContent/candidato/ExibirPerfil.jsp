@@ -15,19 +15,35 @@
 		<hr>
 			<%
 				int id = Integer.parseInt(request.getParameter("id").toString());	
-				Candidato usuario = new Candidato();
+				Candidato candidato = new Candidato();
 					
 				try{
 					IFabricaConexoes fabrica = new FabricaConexoesPostgres();
-					ICandidatoDAO usuarioDao = new CandidatoDAOPostgres(fabrica.obterConexao());
-					usuario = usuarioDao.recuperar(id);
+					ICandidatoDAO candidatoDao = new CandidatoDAOPostgres(fabrica.obterConexao());
+					candidato = candidatoDao.recuperar(id);
 				} catch (Exception e){
 					request.getSession().setAttribute("erro", e.getMessage().toString());
 					response.sendRedirect("../erro/ExibirErro.jsp");
 				}
 			%>
-			<p>Nome do candidato: <%=usuario.getNome()%></p>
+			<p>id: <%=candidato.getId()%></p>
 			<br>
-			<p>Email do candidato: <%=usuario.getEmail()%></p>
+			<p>Nome: <%=candidato.getNome()%></p>
+			<br>
+			<p>Email: <%=candidato.getEmail()%></p>
+			<br>
+			<p>Formação academica: <%=candidato.getFormacaoAcademica() %></p>
+			<br>
+			<p>Experiência profissional: <%=candidato.getExperienciaProf()%></p>
+			<br>
+			<p>Aperfeicoamento: <%=candidato.getAperfeicoamento()%></p>
+			<br>
+			<p>Telefone: <%=candidato.getTelefone()%></p>
+			<br>
+			
+			<a href="<%=request.getContextPath()%>/candidato/ExcluirPerfil.jsp?id=<%=candidato.getId()%>" role="button">Excluir</a>
+			<br>
+			<a href="<%=request.getContextPath()%>/candidato/AlterarPerfil.jsp?id=<%=candidato.getId()%>" role="button">Alterar</a>
+			
 	</body>
 </html>

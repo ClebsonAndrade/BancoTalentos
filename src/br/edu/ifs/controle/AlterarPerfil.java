@@ -49,8 +49,8 @@ public class AlterarPerfil extends HttpServlet {
 		String Email = request.getParameter("email");
 		String Senha = request.getParameter("senha");
 		String Cpf = request.getParameter("cpf");
-		String Formacao_academica = request.getParameter("formacao_academica");
-		String Experiencia_prof = request.getParameter("experiencia_prof");
+		String FormacaoAcademica = request.getParameter("formacao_academica");
+		String ExperienciaProf = request.getParameter("experiencia_prof");
 		String senha = request.getParameter("senha");
 		String Aperfeicoamento = request.getParameter("aperfeicoamento");
 		String Telefone = request.getParameter("telefone");
@@ -65,8 +65,8 @@ public class AlterarPerfil extends HttpServlet {
 			candidato.setSenha(Senha);
 			candidato.setCpf(Cpf);
 			candidato.setAperfeicoamento(Aperfeicoamento);
-			candidato.setExperiencia_prof(Experiencia_prof);
-			candidato.setFormacao_academica(Formacao_academica);
+			candidato.setExperienciaProf(ExperienciaProf);
+			candidato.setFormacaoAcademica(FormacaoAcademica);
 			candidato.setTelefone(Telefone);
 			
 			IFabricaConexoes fabrica = new FabricaConexoesPostgres();

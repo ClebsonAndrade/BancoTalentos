@@ -42,10 +42,10 @@ public class ExcluirPerfil extends HttpServlet {
 			Candidato candidato = new Candidato();
 			candidato.setId(Integer.parseInt(Id));
 			IFabricaConexoes fabrica = new FabricaConexoesPostgres();
-			ICandidatoDAO usuarioDao = new CandidatoDAOPostgres(fabrica.obterConexao());
-			usuarioDao.excluir(candidato);	
+			ICandidatoDAO candidatoDao = new CandidatoDAOPostgres(fabrica.obterConexao());
+			candidatoDao.excluir(candidato);	
 			
-			response.sendRedirect("Cadastrar.jsp");
+			response.sendRedirect("candidato/CadastrarPerfil.jsp");
 			
 		} catch(SQLException e) {
 			request.getSession().setAttribute("erro", e.getMessage().toString());

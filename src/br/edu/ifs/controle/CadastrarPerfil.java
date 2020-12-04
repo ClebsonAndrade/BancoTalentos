@@ -34,15 +34,15 @@ public class CadastrarPerfil extends HttpServlet{
 		String Email = request.getParameter("email");
 		String Senha = request.getParameter("senha");
 		String Cpf = request.getParameter("cpf");
-		String Formacao_academica = request.getParameter("formacao_academica");
-		String Experiencia_prof = request.getParameter("experiencia_prof");
+		String FormacaoAcademica = request.getParameter("formacao_academica");
+		String ExperienciaProf = request.getParameter("experiencia_prof");
 		String Aperfeicoamento = request.getParameter("aperfeicoamento");
 		String Telefone = request.getParameter("telefone");
 		
 		
 		try {
 			
-			Candidato candidato = new Candidato(Nome, Cpf, Senha, Formacao_academica, Experiencia_prof, Aperfeicoamento, Telefone, Email);
+			Candidato candidato = new Candidato(Nome, Cpf, Senha, FormacaoAcademica, ExperienciaProf, Aperfeicoamento, Telefone, Email);
 			IFabricaConexoes fabrica = new FabricaConexoesPostgres();
 			ICandidatoDAO candidatoDao = new CandidatoDAOPostgres(fabrica.obterConexao());
 			int id = candidatoDao.criar(candidato);

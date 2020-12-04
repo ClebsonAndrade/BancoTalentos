@@ -6,8 +6,8 @@ public class Candidato {
 	private String nome;
 	private String cpf;
 	private String senha;
-	private String formacao_academica;
-	private String experiencia_prof;
+	private String formacaoAcademica;
+	private String experienciaProf;
 	private String aperfeicoamento;
 	private String telefone;
 	private String email;
@@ -23,8 +23,8 @@ public class Candidato {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.senha = senha;
-		this.formacao_academica = formacao_academica;
-		this.experiencia_prof = experiencia_prof;
+		this.formacaoAcademica = formacao_academica;
+		this.experienciaProf = experiencia_prof;
 		this.aperfeicoamento = aperfeicoamento;
 		this.telefone = telefone;
 		this.email = email;
@@ -38,8 +38,8 @@ public class Candidato {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.senha = senha;
-		this.formacao_academica = formacao_academica;
-		this.experiencia_prof = experiencia_prof;
+		this.formacaoAcademica = formacao_academica;
+		this.experienciaProf = experiencia_prof;
 		this.aperfeicoamento = aperfeicoamento;
 		this.telefone = telefone;
 		this.email = email;
@@ -53,20 +53,20 @@ public class Candidato {
 		this.cpf = cpf;
 	}
 
-	public String getFormacao_academica() {
-		return formacao_academica;
+	public String getFormacaoAcademica() {
+		return formacaoAcademica;
 	}
 
-	public void setFormacao_academica(String formacao_academica) {
-		this.formacao_academica = formacao_academica;
+	public void setFormacaoAcademica(String formacao_academica) {
+		this.formacaoAcademica = formacao_academica;
 	}
 
-	public String getExperiencia_prof() {
-		return experiencia_prof;
+	public String getExperienciaProf() {
+		return experienciaProf;
 	}
 
-	public void setExperiencia_prof(String experiencia_prof) {
-		this.experiencia_prof = experiencia_prof;
+	public void setExperienciaProf(String experiencia_prof) {
+		this.experienciaProf = experiencia_prof;
 	}
 
 	public String getAperfeicoamento() {

@@ -3,40 +3,40 @@ package br.edu.ifs.modelo;
 public abstract class Vaga {
 	private int id;
 	private String area;
-	private String sub_area;
+	private String subArea;
 	private String descricao;
 	private String competencia;
 	private String habilidade;
 	private String atitude;
 	private String contratacao;
 	private String requisitos;
-	private String faixa_salarial;
+	private String faixaSalarial;
 	public Vaga(int id, String area, String sub_area, String descricao, String competencia, String habilidade,
 			String atitude, String contratacao, String requisitos, String faixa_salarial) {
 		super();
 		this.id = id;
 		this.area = area;
-		this.sub_area = sub_area;
+		this.subArea = sub_area;
 		this.descricao = descricao;
 		this.competencia = competencia;
 		this.habilidade = habilidade;
 		this.atitude = atitude;
 		this.contratacao = contratacao;
 		this.requisitos = requisitos;
-		this.faixa_salarial = faixa_salarial;
+		this.faixaSalarial = faixa_salarial;
 	}
 	public Vaga(String area, String sub_area, String descricao, String competencia, String habilidade, String atitude,
 			String contratacao, String requisitos, String faixa_salarial) {
 		super();
 		this.area = area;
-		this.sub_area = sub_area;
+		this.subArea = sub_area;
 		this.descricao = descricao;
 		this.competencia = competencia;
 		this.habilidade = habilidade;
 		this.atitude = atitude;
 		this.contratacao = contratacao;
 		this.requisitos = requisitos;
-		this.faixa_salarial = faixa_salarial;
+		this.faixaSalarial = faixa_salarial;
 	}
 	public Vaga() {
 		super();
@@ -53,11 +53,11 @@ public abstract class Vaga {
 	public void setArea(String area) {
 		this.area = area;
 	}
-	public String getSub_area() {
-		return sub_area;
+	public String getSubArea() {
+		return subArea;
 	}
-	public void setSub_area(String sub_area) {
-		this.sub_area = sub_area;
+	public void setSubArea(String sub_area) {
+		this.subArea = sub_area;
 	}
 	public String getDescricao() {
 		return descricao;
@@ -95,10 +95,10 @@ public abstract class Vaga {
 	public void setRequisitos(String requisitos) {
 		this.requisitos = requisitos;
 	}
-	public String getFaixa_salarial() {
-		return faixa_salarial;
+	public String getFaixaSalarial() {
+		return faixaSalarial;
 	}
-	public void setFaixa_salarial(String faixa_salarial) {
-		this.faixa_salarial = faixa_salarial;
+	public void setFaixaSalarial(String faixa_salarial) {
+		this.faixaSalarial = faixa_salarial;
 	}
 }

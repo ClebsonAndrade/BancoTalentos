@@ -3,13 +3,13 @@ package br.edu.ifs.modelo;
 public class Empresa {
 	
 	private int id;
-	private String razao_social;
+	private String razaoSocial;
 	private String cnpj;
 	private String telefone;
 	private String email;
 	private String senha;
 	private String setor;
-	private String atividade_economica;
+	private String atividadeEconomica;
 	
 	public Empresa() {
 		super();
@@ -19,25 +19,25 @@ public class Empresa {
 			String atividade_economica) {
 		super();
 		this.id = id;
-		this.razao_social = razao_social;
+		this.razaoSocial = razao_social;
 		this.cnpj = cnpj;
 		this.telefone = telefone;
 		this.email = email;
 		this.senha = senha;
 		this.setor = setor;
-		this.atividade_economica = atividade_economica;
+		this.atividadeEconomica = atividade_economica;
 	}
 
 	public Empresa(String razao_social, String cnpj, String telefone, String email, String senha, String setor,
 			String atividade_economica) {
 		super();
-		this.razao_social = razao_social;
+		this.razaoSocial = razao_social;
 		this.cnpj = cnpj;
 		this.telefone = telefone;
 		this.email = email;
 		this.senha = senha;
 		this.setor = setor;
-		this.atividade_economica = atividade_economica;
+		this.atividadeEconomica = atividade_economica;
 	}
 
 	public int getId() {
@@ -48,12 +48,12 @@ public class Empresa {
 		this.id = id;
 	}
 
-	public String getRazao_social() {
-		return razao_social;
+	public String getRazaoSocial() {
+		return razaoSocial;
 	}
 
-	public void setRazao_social(String razao_social) {
-		this.razao_social = razao_social;
+	public void setRazaoSocial(String razao_social) {
+		this.razaoSocial = razao_social;
 	}
 
 	public String getCnpj() {
@@ -96,11 +96,11 @@ public class Empresa {
 		this.setor = setor;
 	}
 
-	public String getAtividade_economica() {
-		return atividade_economica;
+	public String getAtividadeEconomica() {
+		return atividadeEconomica;
 	}
 
-	public void setAtividade_economica(String atividade_economica) {
-		this.atividade_economica = atividade_economica;
+	public void setAtividadeEconomica(String atividade_economica) {
+		this.atividadeEconomica = atividade_economica;
 	}
 }
