@@ -22,7 +22,7 @@
 				<br>
 				<br>
 				<label for="cpf">Cpf:</label>
-				<input type="password" id="cpf" name="cpf">
+				<input type="text" id="cpf" name="cpf">
 				<br>
 				<br>
 				<label for="formacao_academica">Formação academica:</label>

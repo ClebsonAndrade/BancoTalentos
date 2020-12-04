@@ -51,7 +51,6 @@ public class AlterarPerfil extends HttpServlet {
 		String Cpf = request.getParameter("cpf");
 		String FormacaoAcademica = request.getParameter("formacao_academica");
 		String ExperienciaProf = request.getParameter("experiencia_prof");
-		String senha = request.getParameter("senha");
 		String Aperfeicoamento = request.getParameter("aperfeicoamento");
 		String Telefone = request.getParameter("telefone");
 		
@@ -73,7 +72,7 @@ public class AlterarPerfil extends HttpServlet {
 			ICandidatoDAO candidatoDao = new CandidatoDAOPostgres(fabrica.obterConexao());
 			candidatoDao.atualizar(candidato);	
 			
-			response.sendRedirect("candidato/ExibirPerfil.jsp");
+			response.sendRedirect("candidato/ExibirPerfil.jsp?id="+Id);
 			
 		} catch(SQLException e) {
 			request.getSession().setAttribute("erro", e.getMessage().toString());

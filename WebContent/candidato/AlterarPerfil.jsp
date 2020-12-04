@@ -32,15 +32,35 @@
 			<input type="text" id="nome" name="nome" value="<%=candidato.getNome()%>">
 			<br>
 			<br>
-			<label for="login">email:</label>
+			<label for="email">email:</label>
 			<input type="text" id="email" name="email" value="<%=candidato.getEmail()%>">
+			<br>
+			<br>
+			<label for="aperfeicoamente">Aperfeiçoamento:</label>
+			<input type="text" id="aperfeicoamento" name="aperfeicoamento" value="<%=candidato.getAperfeicoamento()%>">
+			<br>
+			<br>
+			<label for="experiencia_prof">Experiência professional:</label>
+			<input type="text" id="experiencia_prof" name="experiencia_prof" value="<%=candidato.getExperienciaProf()%>">
+			<br>
+			<br>
+			<label for="formacao_academica">Formação Academica:</label>
+			<input type="text" id="formacao_academica" name="formacao_academica" value="<%=candidato.getFormacaoAcademica()%>">
 			<br>
 			<br>
 			<label for="senha">Senha:</label>
 			<input type="text" id="senha" name="senha" value="">
 			<br>
 			<br>
-			<input type="submit" value="Alterar Usuário"> 
+			<label for="cpf">cpf:</label>
+			<input type="text" id="cpf" name="cpf" value="">
+			<br>
+			<br>
+			<label for="telefone">Telefone:</label>
+			<input type="text" id="telefone" name="telefone" value="<%=candidato.getTelefone()%>">
+			<br>
+			<br>
+			<input type="submit" value="Alterar Perfil"> 
 			
 		</form>
 	</body>
