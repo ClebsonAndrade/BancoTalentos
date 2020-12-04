@@ -11,15 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.edu.ifs.dao.FabricaConexoesPostgres;
 import br.edu.ifs.dao.IFabricaConexoes;
-import br.edu.ifs.dao.IUsuarioDAO;
-import br.edu.ifs.dao.UsuarioDAOPostgres;
+import br.edu.ifs.dao.ICandidatoDAO;
+import br.edu.ifs.dao.CandidatoDAOPostgres;
 import br.edu.ifs.modelo.Candidato;
 
-@WebServlet("/CadastrarUsuario.do")
-public class CadastrarUsuario extends HttpServlet{
+@WebServlet("/CadastrarCandidato.do")
+public class CadastrarCandidato extends HttpServlet{
 	private static final long serialVersionUTD = 1L;
 	
-	public CadastrarUsuario() {
+	public CadastrarCandidato() {
 		super();
 	}
 	
@@ -31,17 +31,24 @@ public class CadastrarUsuario extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String Nome = request.getParameter("nome");
-		String Login = request.getParameter("login");
+		String Email = request.getParameter("email");
 		String Senha = request.getParameter("senha");
+		String Cpf = request.getParameter("cpf");
+		String Formacao_academica = request.getParameter("formacao_academica");
+		String Experiencia_prof = request.getParameter("experiencia_prof");
+		String senha = request.getParameter("senha");
+		String Aperfeicoamento = request.getParameter("aperfeicoamento");
+		String Telefone = request.getParameter("telefone");
+		
 		
 		try {
 			
-			Candidato candidato = new Candidato(Nome, Login, Senha);
+			Candidato candidato = new Candidato(Nome, Cpf, Senha, Formacao_academica, Experiencia_prof, Aperfeicoamento, Telefone, Email);
 			IFabricaConexoes fabrica = new FabricaConexoesPostgres();
-			IUsuarioDAO usuarioDao = new UsuarioDAOPostgres(fabrica.obterConexao());
-			int id = usuarioDao.criar(candidato);
+			ICandidatoDAO candidatoDao = new CandidatoDAOPostgres(fabrica.obterConexao());
+			int id = candidatoDao.criar(candidato);
 			
-			response.sendRedirect("usuario/ExibirUsuario.jsp?id="+id);
+			response.sendRedirect("candidato/ExibirPerfil.jsp?id="+id);
 			
 		} catch(SQLException e) {
 			request.getSession().setAttribute("erro", e.getMessage().toString());

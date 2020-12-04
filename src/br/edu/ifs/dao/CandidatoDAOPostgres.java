@@ -9,25 +9,30 @@ import java.util.List;
 
 import br.edu.ifs.modelo.Candidato;
 
-public class UsuarioDAOPostgres implements IUsuarioDAO {
+public class CandidatoDAOPostgres implements ICandidatoDAO {
 
 	private Connection conexao;
 	
-	public UsuarioDAOPostgres(Connection pConexao) {
+	public CandidatoDAOPostgres(Connection pConexao) {
 		this.conexao = pConexao;
 	}
 	
 	@Override
 	public int criar(Candidato candidato) throws SQLException {
-		String sql = "INSERT INTO tb_usuario (nome, login, senha) VALUES (?, ?, MD5(?))";
+		String sql = "INSERT INTO tb_candidato (nome, senha, cpf, formacao_academica, experiencia_prof, aperfeicoamento, telefone, email) VALUES (?, MD5(?), ?, ?, ?, ?, ?, ?)";
 		int id = 0;
 		
 		try {
 			PreparedStatement stmt = this.conexao.prepareStatement(sql);
 			
 			stmt.setString(1, candidato.getNome());
-			stmt.setString(2, candidato.getLogin());
-			stmt.setString(3, candidato.getSenha());
+			stmt.setString(2, candidato.getSenha());
+			stmt.setString(3, candidato.getCpf());
+			stmt.setString(4, candidato.getFormacao_academica());
+			stmt.setString(5, candidato.getExperiencia_prof());
+			stmt.setString(6, candidato.getAperfeicoamento());
+			stmt.setString(7, candidato.getTelefone());
+			stmt.setString(8, candidato.getEmail());
 			stmt.execute();
 			
 			sql = "SELECT CURRVAL(pg_get_serial_sequence('tb_usuario', 'id')) AS id";

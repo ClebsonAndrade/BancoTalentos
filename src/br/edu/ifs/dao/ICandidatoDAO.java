@@ -5,7 +5,7 @@ import java.util.List;
 
 import br.edu.ifs.modelo.Candidato;
 
-public interface IUsuarioDAO {
+public interface ICandidatoDAO {
 
 	public int criar(Candidato candidato) throws SQLException;
 	

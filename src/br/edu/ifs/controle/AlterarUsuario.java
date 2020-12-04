@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.edu.ifs.dao.FabricaConexoesPostgres;
 import br.edu.ifs.dao.IFabricaConexoes;
-import br.edu.ifs.dao.IUsuarioDAO;
-import br.edu.ifs.dao.UsuarioDAOPostgres;
+import br.edu.ifs.dao.ICandidatoDAO;
+import br.edu.ifs.dao.CandidatoDAOPostgres;
 import br.edu.ifs.modelo.Candidato;
 
 /**
@@ -59,7 +59,7 @@ public class AlterarUsuario extends HttpServlet {
 			candidato.setSenha(Senha);
 			
 			IFabricaConexoes fabrica = new FabricaConexoesPostgres();
-			IUsuarioDAO usuarioDao = new UsuarioDAOPostgres(fabrica.obterConexao());
+			ICandidatoDAO usuarioDao = new CandidatoDAOPostgres(fabrica.obterConexao());
 			usuarioDao.atualizar(candidato);	
 			
 			response.sendRedirect("usuario/ListarUsuario.jsp");
