@@ -18,14 +18,14 @@ import br.edu.ifs.modelo.Candidato;
 /**
  * Servlet implementation class ExcluirUsuario
  */
-@WebServlet("/ExcluirUsuario.do")
-public class ExcluirUsuario extends HttpServlet {
+@WebServlet("/ExcluirPerfil.do")
+public class ExcluirPerfil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ExcluirUsuario() {
+    public ExcluirPerfil() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -45,7 +45,7 @@ public class ExcluirUsuario extends HttpServlet {
 			ICandidatoDAO usuarioDao = new CandidatoDAOPostgres(fabrica.obterConexao());
 			usuarioDao.excluir(candidato);	
 			
-			response.sendRedirect("usuario/ListarUsuario.jsp");
+			response.sendRedirect("Cadastrar.jsp");
 			
 		} catch(SQLException e) {
 			request.getSession().setAttribute("erro", e.getMessage().toString());
