@@ -171,19 +171,19 @@ public class CandidatoDAOPostgres implements ICandidatoDAO {
 	
 	
 	@Override
-	public Candidato autenticar(String login, String senha) throws SQLException {
+	public Candidato autenticar(String email, String senha) throws SQLException {
 		String sql = "SELECT * FROM tb_candidato WHERE email = ? AND senha = MD5(?)";
 		
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
 			
-			stmt.setString(1, login);
+			stmt.setString(1, email);
 			stmt.setString(2, senha);
 			
 			ResultSet rs = stmt.executeQuery();
 			
 			if(rs.next()){
-				Candidato candidato = new Candidato(rs.getInt("id"), rs.getString("nome"), rs.getString("login"), rs.getString("senha"));
+				Candidato candidato = new Candidato(rs.getInt("id"), rs.getString("nome"), rs.getString("cpf"), rs.getString("senha"), rs.getString("formacao_academica"), rs.getString("experiencia_prof"), rs.getString("aperfeicoamento"), rs.getString("telefone"), rs.getString("email"));
 				return candidato;
 			} else {
 				return null;
@@ -198,7 +198,9 @@ public class CandidatoDAOPostgres implements ICandidatoDAO {
 		
 	}
 
+	/*
 	@Override
+
 	public List<Candidato> listar(int linhas, int paginas) throws SQLException {
 		String sql = "SELECT id, nome, login, senha FROM tb_usuario ORDER BY id LIMIT ? OFFSET ?";
 		List<Candidato> listaUsuarios = new ArrayList<Candidato>();
@@ -230,7 +232,9 @@ public class CandidatoDAOPostgres implements ICandidatoDAO {
 			conexao.close();
 		}
 	}
+*/
 
+	/*
 	@Override
 	public int recuperarTotalUsuarios() throws SQLException {
 		String sql = "SELECT COUNT(*) as TotalUsuarios FROM tb_usuario";
@@ -251,7 +255,7 @@ public class CandidatoDAOPostgres implements ICandidatoDAO {
 			throw e;
 		} 
 	}
-
+*/
 }
 
 	

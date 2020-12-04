@@ -20,9 +20,9 @@ public interface ICandidatoDAO {
 	
 	//public List<Candidato> listar() throws SQLException;
 	
-	public List<Candidato> listar(int linhas, int paginas) throws SQLException;
+	//public List<Candidato> listar(int linhas, int paginas) throws SQLException;
 	
-	public Candidato autenticar(String login, String senha) throws SQLException;
+	public Candidato autenticar(String email, String senha) throws SQLException;
 
-	public int recuperarTotalUsuarios() throws SQLException;
+	//public int recuperarTotalUsuarios() throws SQLException;
 }

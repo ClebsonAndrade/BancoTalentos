@@ -12,8 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import br.edu.ifs.dao.FabricaConexoesPostgres;
 import br.edu.ifs.dao.IFabricaConexoes;
-import br.edu.ifs.dao.ICandidatoDAO;
-import br.edu.ifs.dao.CandidatoDAOPostgres;
+import br.edu.ifs.dao.IUsuarioDAO;
+import br.edu.ifs.dao.UsuarioDAOPostgres;
 import br.edu.ifs.modelo.Candidato;
 
 /**
@@ -51,13 +51,13 @@ public class AutenticarUsuario extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String Login = request.getParameter("login");
+		String Login = request.getParameter("email");
 		String Senha = request.getParameter("senha");
 		
 		try {
 						
 			IFabricaConexoes fabrica = new FabricaConexoesPostgres();
-			ICandidatoDAO usuarioDao = new CandidatoDAOPostgres(fabrica.obterConexao());
+			IUsuarioDAO usuarioDao = new UsuarioDAOPostgres(fabrica.obterConexao());
 			Candidato usuarioAutenticado = usuarioDao.autenticar(Login, Senha);	
 			
 			if(usuarioAutenticado != null) {
