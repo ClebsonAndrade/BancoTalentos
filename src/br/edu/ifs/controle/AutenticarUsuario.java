@@ -14,7 +14,7 @@ import br.edu.ifs.dao.FabricaConexoesPostgres;
 import br.edu.ifs.dao.IFabricaConexoes;
 import br.edu.ifs.dao.IUsuarioDAO;
 import br.edu.ifs.dao.UsuarioDAOPostgres;
-import br.edu.ifs.modelo.Usuario;
+import br.edu.ifs.modelo.Candidato;
 
 /**
  * Servlet implementation class AutenticarUsuario
@@ -58,7 +58,7 @@ public class AutenticarUsuario extends HttpServlet {
 						
 			IFabricaConexoes fabrica = new FabricaConexoesPostgres();
 			IUsuarioDAO usuarioDao = new UsuarioDAOPostgres(fabrica.obterConexao());
-			Usuario usuarioAutenticado = usuarioDao.autenticar(Login, Senha);	
+			Candidato usuarioAutenticado = usuarioDao.autenticar(Login, Senha);	
 			
 			if(usuarioAutenticado != null) {
 				HttpSession sessao = request.getSession(true);

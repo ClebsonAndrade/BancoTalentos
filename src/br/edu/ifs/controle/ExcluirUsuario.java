@@ -13,7 +13,7 @@ import br.edu.ifs.dao.FabricaConexoesPostgres;
 import br.edu.ifs.dao.IFabricaConexoes;
 import br.edu.ifs.dao.IUsuarioDAO;
 import br.edu.ifs.dao.UsuarioDAOPostgres;
-import br.edu.ifs.modelo.Usuario;
+import br.edu.ifs.modelo.Candidato;
 
 /**
  * Servlet implementation class ExcluirUsuario
@@ -39,11 +39,11 @@ public class ExcluirUsuario extends HttpServlet {
 		
 		try {
 			
-			Usuario usuario = new Usuario();
-			usuario.setId(Integer.parseInt(Id));
+			Candidato candidato = new Candidato();
+			candidato.setId(Integer.parseInt(Id));
 			IFabricaConexoes fabrica = new FabricaConexoesPostgres();
 			IUsuarioDAO usuarioDao = new UsuarioDAOPostgres(fabrica.obterConexao());
-			usuarioDao.excluir(usuario);	
+			usuarioDao.excluir(candidato);	
 			
 			response.sendRedirect("usuario/ListarUsuario.jsp");
 			

@@ -13,7 +13,7 @@ import br.edu.ifs.dao.FabricaConexoesPostgres;
 import br.edu.ifs.dao.IFabricaConexoes;
 import br.edu.ifs.dao.IUsuarioDAO;
 import br.edu.ifs.dao.UsuarioDAOPostgres;
-import br.edu.ifs.modelo.Usuario;
+import br.edu.ifs.modelo.Candidato;
 
 /**
  * Servlet implementation class AlterarUsuario
@@ -52,15 +52,15 @@ public class AlterarUsuario extends HttpServlet {
 		
 		try {
 			
-			Usuario usuario = new Usuario();
-			usuario.setId(Integer.parseInt(Id));
-			usuario.setNome(Nome);
-			usuario.setLogin(Login);
-			usuario.setSenha(Senha);
+			Candidato candidato = new Candidato();
+			candidato.setId(Integer.parseInt(Id));
+			candidato.setNome(Nome);
+			candidato.setLogin(Login);
+			candidato.setSenha(Senha);
 			
 			IFabricaConexoes fabrica = new FabricaConexoesPostgres();
 			IUsuarioDAO usuarioDao = new UsuarioDAOPostgres(fabrica.obterConexao());
-			usuarioDao.atualizar(usuario);	
+			usuarioDao.atualizar(candidato);	
 			
 			response.sendRedirect("usuario/ListarUsuario.jsp");
 			

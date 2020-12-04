@@ -13,7 +13,7 @@ import br.edu.ifs.dao.FabricaConexoesPostgres;
 import br.edu.ifs.dao.IFabricaConexoes;
 import br.edu.ifs.dao.IUsuarioDAO;
 import br.edu.ifs.dao.UsuarioDAOPostgres;
-import br.edu.ifs.modelo.Usuario;
+import br.edu.ifs.modelo.Candidato;
 
 @WebServlet("/CadastrarUsuario.do")
 public class CadastrarUsuario extends HttpServlet{
@@ -36,10 +36,10 @@ public class CadastrarUsuario extends HttpServlet{
 		
 		try {
 			
-			Usuario usuario = new Usuario(Nome, Login, Senha);
+			Candidato candidato = new Candidato(Nome, Login, Senha);
 			IFabricaConexoes fabrica = new FabricaConexoesPostgres();
 			IUsuarioDAO usuarioDao = new UsuarioDAOPostgres(fabrica.obterConexao());
-			int id = usuarioDao.criar(usuario);
+			int id = usuarioDao.criar(candidato);
 			
 			response.sendRedirect("usuario/ExibirUsuario.jsp?id="+id);
 			

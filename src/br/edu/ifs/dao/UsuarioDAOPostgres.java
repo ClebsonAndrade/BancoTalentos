@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.ifs.modelo.Usuario;
+import br.edu.ifs.modelo.Candidato;
 
 public class UsuarioDAOPostgres implements IUsuarioDAO {
 
@@ -18,16 +18,16 @@ public class UsuarioDAOPostgres implements IUsuarioDAO {
 	}
 	
 	@Override
-	public int criar(Usuario usuario) throws SQLException {
+	public int criar(Candidato candidato) throws SQLException {
 		String sql = "INSERT INTO tb_usuario (nome, login, senha) VALUES (?, ?, MD5(?))";
 		int id = 0;
 		
 		try {
 			PreparedStatement stmt = this.conexao.prepareStatement(sql);
 			
-			stmt.setString(1, usuario.getNome());
-			stmt.setString(2, usuario.getLogin());
-			stmt.setString(3, usuario.getSenha());
+			stmt.setString(1, candidato.getNome());
+			stmt.setString(2, candidato.getLogin());
+			stmt.setString(3, candidato.getSenha());
 			stmt.execute();
 			
 			sql = "SELECT CURRVAL(pg_get_serial_sequence('tb_usuario', 'id')) AS id";
@@ -47,7 +47,7 @@ public class UsuarioDAOPostgres implements IUsuarioDAO {
 	}
 
 	@Override
-	public Usuario recuperar(int id) throws Exception, SQLException {
+	public Candidato recuperar(int id) throws Exception, SQLException {
 		String sql = "SELECT * FROM tb_usuario WHERE id = ?";
 		
 		try {
@@ -58,9 +58,9 @@ public class UsuarioDAOPostgres implements IUsuarioDAO {
 			ResultSet rs = stmt.executeQuery();
 			
 			if(rs.next()) {
-				Usuario usuario = new Usuario(rs.getInt("id"), rs.getString("nome"), rs.getString("login"), rs.getString("senha"));
+				Candidato candidato = new Candidato(rs.getInt("id"), rs.getString("nome"), rs.getString("login"), rs.getString("senha"));
 				
-				return usuario;
+				return candidato;
 			} else {
 				throw new Exception("O ID do usuário não existe");
 			}
@@ -73,16 +73,16 @@ public class UsuarioDAOPostgres implements IUsuarioDAO {
 	}
 
 	@Override
-	public boolean atualizar(Usuario usuario) throws SQLException {
+	public boolean atualizar(Candidato candidato) throws SQLException {
 		String sql = "UPDATE tb_usuario SET nome=?, login=?, senha=MD5(?) WHERE id = ?";
 		
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
 			
-			stmt.setString(1, usuario.getNome());
-			stmt.setString(2, usuario.getLogin());
-			stmt.setString(3, usuario.getSenha());
-			stmt.setInt(4, usuario.getId());
+			stmt.setString(1, candidato.getNome());
+			stmt.setString(2, candidato.getLogin());
+			stmt.setString(3, candidato.getSenha());
+			stmt.setInt(4, candidato.getId());
 			stmt.executeUpdate(); 
 			
 			
@@ -96,13 +96,13 @@ public class UsuarioDAOPostgres implements IUsuarioDAO {
 	}
 
 	@Override
-	public boolean excluir(Usuario usuario) throws SQLException {
+	public boolean excluir(Candidato candidato) throws SQLException {
 		String sql = "DELETE FROM tb_usuario WHERE id = ?";
 
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
 			
-			stmt.setInt(1, usuario.getId());
+			stmt.setInt(1, candidato.getId());
 			stmt.execute(); 
 			
 			
@@ -119,15 +119,15 @@ public class UsuarioDAOPostgres implements IUsuarioDAO {
 	
 	
 	@Override
-	public Usuario buscarPorLogin(String login) throws SQLException {
+	public Candidato buscarPorLogin(String login) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Usuario> listar() throws SQLException {
+	public List<Candidato> listar() throws SQLException {
 		String sql = "SELECT id, nome, login, senha FROM tb_usuario ORDER BY id";
-		List<Usuario> listaUsuarios = new ArrayList<Usuario>();
+		List<Candidato> listaUsuarios = new ArrayList<Candidato>();
 		
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
@@ -137,14 +137,14 @@ public class UsuarioDAOPostgres implements IUsuarioDAO {
 			
 			while(rs.next()) {
 				
-				Usuario usuario = new Usuario(
+				Candidato candidato = new Candidato(
 						rs.getInt("id"),
 						rs.getString("nome"),
 						rs.getString("login"),
 						rs.getString("senha")
 				);
 				
-				listaUsuarios.add(usuario);
+				listaUsuarios.add(candidato);
 			}
 			
 		
@@ -157,7 +157,7 @@ public class UsuarioDAOPostgres implements IUsuarioDAO {
 	}
 
 	@Override
-	public Usuario autenticar(String login, String senha) throws SQLException {
+	public Candidato autenticar(String login, String senha) throws SQLException {
 		String sql = "SELECT * FROM tb_usuario WHERE login = ? AND senha = MD5(?)";
 		
 		try {
@@ -169,8 +169,8 @@ public class UsuarioDAOPostgres implements IUsuarioDAO {
 			ResultSet rs = stmt.executeQuery();
 			
 			if(rs.next()){
-				Usuario usuario = new Usuario(rs.getInt("id"), rs.getString("nome"), rs.getString("login"), rs.getString("senha"));
-				return usuario;
+				Candidato candidato = new Candidato(rs.getInt("id"), rs.getString("nome"), rs.getString("login"), rs.getString("senha"));
+				return candidato;
 			} else {
 				return null;
 			}
@@ -185,9 +185,9 @@ public class UsuarioDAOPostgres implements IUsuarioDAO {
 	}
 
 	@Override
-	public List<Usuario> listar(int linhas, int paginas) throws SQLException {
+	public List<Candidato> listar(int linhas, int paginas) throws SQLException {
 		String sql = "SELECT id, nome, login, senha FROM tb_usuario ORDER BY id LIMIT ? OFFSET ?";
-		List<Usuario> listaUsuarios = new ArrayList<Usuario>();
+		List<Candidato> listaUsuarios = new ArrayList<Candidato>();
 		
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
@@ -198,14 +198,14 @@ public class UsuarioDAOPostgres implements IUsuarioDAO {
 			
 			while(rs.next()) {
 				
-				Usuario usuario = new Usuario(
+				Candidato candidato = new Candidato(
 						rs.getInt("id"),
 						rs.getString("nome"),
 						rs.getString("login"),
 						rs.getString("senha")
 				);
 				
-				listaUsuarios.add(usuario);
+				listaUsuarios.add(candidato);
 			}
 			
 		
